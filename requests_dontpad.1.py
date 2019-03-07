@@ -6,7 +6,7 @@ import threading
 import time
 
 async def fetch(url, session):
-    async with session.post(url, data={'text':'Rickdiculo'} ) as response:
+    async with session.post(url, data={'text':'Rickdiculo02'} ) as response:
         delay = response.headers.get("DELAY")
         date = response.headers.get("DATE")
         print("{}:{} with delay {}".format(date, response.url, delay))
@@ -23,7 +23,7 @@ async def run(r):
     url = "http://34.219.164.43:3500/"
     tasks = []
     # create instance of Semaphore
-    sem = asyncio.Semaphore(1000)
+    sem = asyncio.Semaphore(10000)
 
     # Create client session that will ensure we dont open new connection
     # per each request.
@@ -38,7 +38,7 @@ async def run(r):
         await responses
     
 def worker(): 
-    number = 1000000
+    number = 50000
     loop = asyncio.get_event_loop()
     future = asyncio.ensure_future(run(number))
     return loop.run_until_complete(future)
