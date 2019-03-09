@@ -22,7 +22,7 @@ async def run(r):
     url = "http://34.219.164.43:3500/"
     tasks = []
     # create instance of Semaphore
-    sem = asyncio.Semaphore(100000)
+    sem = asyncio.Semaphore(700000)
 
     # Create client session that will ensure we dont open new connection
     # per each request.
