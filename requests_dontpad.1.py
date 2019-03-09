@@ -5,7 +5,7 @@ from aiohttp import ClientSession
 import time
 
 async def fetch(url, session):
-    async with session.post(url, data={'text':'Rickdiculo'} ) as response:
+    async with session.post(url, data={'text':'bot11'} ) as response:
         delay = response.headers.get("DELAY")
         date = response.headers.get("DATE")
         print("{}:{} with delay {}".format(date, response.url, delay))
@@ -19,10 +19,10 @@ async def bound_fetch(sem, url, session):
 
 
 async def run(r):
-    url = "http://34.219.164.43:3500/"
+    url = "http://34.219.164.43:3500/porradeirasinistra"
     tasks = []
     # create instance of Semaphore
-    sem = asyncio.Semaphore(700000)
+    sem = asyncio.Semaphore(60000)
 
     # Create client session that will ensure we dont open new connection
     # per each request.
@@ -37,7 +37,7 @@ async def run(r):
         await responses
     
 def worker(): 
-    number = 1000000
+    number = 600000
     loop = asyncio.get_event_loop()
     future = asyncio.ensure_future(run(number))
     return loop.run_until_complete(future)
