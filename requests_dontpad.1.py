@@ -2,7 +2,6 @@
 import random
 import asyncio
 from aiohttp import ClientSession
-import threading 
 import time
 
 async def fetch(url, session):
